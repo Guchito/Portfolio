@@ -5,7 +5,7 @@
 To view my portfolio **[click here](https://agusgaggero.com)**
 
 ## Preview
-!(public/preview.png)
+![Portfolio](public/preview.png)
 
 ## Features
 
