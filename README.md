@@ -4,6 +4,9 @@
 
 To view my portfolio **[click here](https://agusgaggero.com)**
 
+## Preview
+!(public/preview.png)
+
 ## Features
 
 - Modern and Minimal bento-like, sleek UI Design
