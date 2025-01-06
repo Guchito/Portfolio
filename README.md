@@ -4,9 +4,7 @@
 
 ![astro-bento-portfolio | Bento-like Personal Porfolio Template](public/preview.png)
 
-To view a demo example, **[click here](https://sparkly-speculoos-0c9197.netlify.app/)**
-
-or my portfolio **[click here](https://gianmarcocavallo.com)**
+To view my portfolio **[click here](https://agusgaggero.com)**
 
 ## Features
 
@@ -17,7 +15,6 @@ or my portfolio **[click here](https://gianmarcocavallo.com)**
 - Ready to be deployed on [Netlify](https://www.netlify.com/)
 - Blog
 - RSS support (your-domain/rss.xml)
-- Cool 3d globe
 
 ## Tech Stack
 
@@ -30,12 +27,12 @@ or my portfolio **[click here](https://gianmarcocavallo.com)**
 
 ```bash
 # Clone this repository
-$ git clone https://github.com/Ladvace/astro-bento-portfolio
+$ git clone https://github.com/Guchito/Portfolio.git
 ```
 
 ```bash
 # Go into the repository
-$ cd astro-bento-portfolio
+$ cd portfolio
 ```
 
 ```bash
