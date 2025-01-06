@@ -1,0 +1,21 @@
+---
+import Card from "./Card/index.astro";
+const { title } = Astro.props;
+const allProjects = await Astro.glob("../content/portfolio/*.md");
+
+---
+
+
+
+{
+    allProjects.map((project) => (
+        <Card  colSpan="md:col-span-3 mb-10" rowSpan="md:row-span-4">
+            <div class="flex flex-col gap-2">
+                <h2 class="text-white text-xl font-bold">{project.frontmatter.title}</h2>
+                <p class="text-white">{project.frontmatter.description}</p>
+                <img src={project.frontmatter.image} alt={project.frontmatter.title} class="w-full h-48 object-cover rounded-lg" />
+            </div>
+
+        </Card>
+    ))
+} 

@@ -9,6 +9,8 @@ function Tooltip(props: Props) {
   const [clickCount, setClickCount] = createSignal(0);
 
   const messages = [
+    "Hi",
+    "Hello?",
     "Hi there!",
     "Clicked again?",
     "Still here?",
