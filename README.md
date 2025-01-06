@@ -2,9 +2,6 @@
 
 ## A personal portfolio website made using `Astro`.
 
-
-![astro-bento-portfolio | Bento-like Personal Porfolio Template](public/preview.png)
-
 To view my portfolio **[click here](https://agusgaggero.com)**
 
 ## Features
