@@ -67,3 +67,7 @@ You just need to fork this repo and linking it to your Netlify account.
 ## Authors ❤️
 
 - Agustin - https://github.com/Guchito
+
+## License
+
+The MIT License (MIT) - see [LICENSE](LICENSE) for further details
