@@ -1,6 +1,6 @@
 ---
 title: Cocktail Finder
-image: "../../../public/Portfolio/cocktail.png"
+image: "./4.png"
 imageAlt: Screenshot of the cocktail finder website.
 description: Responsive web application for discovering cocktail recipes, using React, TypeScript, Vite, and Axios for API integration, with Tailwind CSS for styling, Zustand for state management, and Zod for data validation, delivering a fast and user-friendly experience.
 github: https://github.com/Guchito/Cockatil-finder

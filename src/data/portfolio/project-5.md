@@ -1,6 +1,6 @@
 ---
 title: Star Wars Api
-image: "../../../public/Portfolio/StarWarsApi.png"
+image: "./5.png"
 imageAlt: Screenshot of the Star Wars website.
 description: A Star Wars-themed web application built with JavaScript and React, designed to explore characters, planets, starships, and more from the Star Wars universe. This app consumes data from the Star Wars API (SWAPI).
 github: https://github.com/Guchito/Starwars-React

@@ -1,6 +1,6 @@
 ---
 title: Crypto Compare
-image: "../../../public/Portfolio/cryptoCompare.png"
+image: "./3.png"
 imageAlt: Screenshot of the crypto compare website.
 description: This project is a web application that allows you to check cryptocurrency prices in real-time. Built with React and Vite.
 github: https://github.com/Guchito/crypto
