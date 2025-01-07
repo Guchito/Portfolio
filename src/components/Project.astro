@@ -1,21 +1,43 @@
 ---
+import { Image } from "astro:assets";
 import Card from "./Card/index.astro";
+import { getCollection } from "astro:content";
+import Button from "./Button.astro";
+import { Icon } from 'astro-icon/components'
 const { title } = Astro.props;
-const allProjects = await Astro.glob("../content/portfolio/*.md");
-
+const allProjects = await getCollection("portfolio");
 ---
 
 
 
 {
+    
     allProjects.map((project) => (
+
         <Card  colSpan="md:col-span-3 mb-10" rowSpan="md:row-span-4">
-            <div class="flex flex-col gap-2">
-                <h2 class="text-white text-xl font-bold">{project.frontmatter.title}</h2>
-                <p class="text-white">{project.frontmatter.description}</p>
-                <img src={project.frontmatter.image} alt={project.frontmatter.title} class="w-full h-48 object-cover rounded-lg" />
+            <div class="flex flex-row gap-2">
+                <div class="flex flex-col gap-2 p-4 w-4/5">
+                    <h2 class="text-white text-xl font-bold">{project.data.title}</h2>
+                    <p class="text-white">{project.data.description}</p>
+                    <div class="flex gap-4 items-center justify-center mt-4">
+                        <a href={project.data.github} aria-label="github code" target="_blank">
+                            <Button aria-label="github code">
+                                <Icon name="ri:github-fill" class="h-6" />
+                                <span class="sr-only">GitHub code</span>
+                            </Button>
+                        </a>
+                        <a href={project.data.link} aria-label="Website" target="_blank">
+                            <Button aria-label="Website">
+                                <Icon name="ri:linkedin-box-fill" class="h-6" />
+                                <span class="sr-only">Website</span>
+                            </Button>
+                        </a>
+                    </div>
+                </div>
+                <img src={project.data.image.src} alt={project.data.imageAlt} class="w-full h-48 object-cover rounded-lg" />
             </div>
 
         </Card>
+
     ))
 } 
