@@ -1,6 +1,6 @@
 ---
 title: Expenses Planner
-image: "../../../public/Portfolio/expenses.png"
+image: "./6.png"
 imageAlt: Screenshot of the cocktail finder website.
 description: An intuitive expense planner application using React and Vite, featuring budget tracking, expense categorization, and filtering, with JavaScript for logic and CSS for styling to deliver a seamless user experience.
 github: https://github.com/Guchito/Expenses-Planner

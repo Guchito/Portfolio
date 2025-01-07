@@ -1,6 +1,6 @@
 ---
 title: React Tic Tac Toe
-image: "../../../public/Portfolio/tateti.png"
+image: "./8.png"
 imageAlt: Screenshot of the tic tac toe website.
 description: Tic Tac Toe game using React and JavaScript, featuring a 3x3 grid, two-player support, and a simple, intuitive client-side implementation without external dependencies.
 github: https://github.com/Guchito/React-Tic-Tac-Toe

@@ -1,6 +1,6 @@
 ---
 title: Vet Following
-image: "../../../public/Portfolio/Vet.png"
+image: "./7.png"
 imageAlt: Screenshot of the cocktail finder website.
 description: A veterinary clinic patient follow-up application with React and Vite, enabling patient tracking, symptom management, and discharge recording, styled with Tailwind CSS for a clean and responsive user interface.
 github: https://github.com/Guchito/Appointments

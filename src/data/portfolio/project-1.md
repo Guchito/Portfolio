@@ -1,6 +1,6 @@
 ---
 title:  Vinariam E-Commerce
-image: "../../../public/Portfolio/Vinariam.png"
+image: "./1.png"
 imageAlt: Screenshot of the Vinariam e-commerce website.
 description: A comprehensive e-commerce solution. Using EJS for dynamic templating, CSS for styling, and JavaScript for client-side scripting. Built and managed the backend with Node.js, Express.js, and Sequelize, integrating a MySQL database for efficient data management.
 github: https://github.com/Guchito/vinariam
