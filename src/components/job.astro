@@ -1,0 +1,32 @@
+---
+import Card from "./Card/index.astro";
+import Button from "./Button.astro";
+import { Icon } from 'astro-icon/components'
+const allJobs = await Astro.glob("../data/work/*.md");
+---
+
+
+
+{
+    
+    allJobs.map((job) => (
+        
+        <Card  colSpan="md:col-span-4 mb-6" rowSpan="md:row-span-5">
+            <div class="flex flex-col sm:flex-row gap-1">
+                <div class="flex flex-col p-4 ms:w-4/5">
+                    <p class="text-white text-sm">{job.frontmatter.since} - {job.frontmatter.until} </p>
+                    <h2 class="text-[#e63a46] text-xl font-bold">{job.frontmatter.company}</h2>
+                    <h3 class="text-white ">{job.frontmatter.title}</h3>
+                    <p class="text-sm text-white">{job.frontmatter.description}</p>
+                    <a class="mt-2" href={job.frontmatter.link} aria-label="Website" target="_blank">
+                    <Button aria-label="Website">
+                        <Icon name="ri:pages-line" class="h-6" />
+                        <span class="sr-only">Website</span>
+                    </Button>
+                </a>
+                </div>
+            </div>
+        </Card>
+
+    ))
+} 

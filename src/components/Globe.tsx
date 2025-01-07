@@ -7,10 +7,9 @@ const GlobeComponent = () => {
 
   const visitedCountries = [
     "France",
-    "China",
+    "Spain",
+    "USA",
     "Italy",
-    "Sri Lanka",
-    "Turkey",
     "Greece",
     "Malta",
     "Hungary",
