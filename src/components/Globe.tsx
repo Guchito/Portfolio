@@ -44,7 +44,7 @@ const GlobeComponent = () => {
 
     let projection = d3
       .geoOrthographic()
-      .scale(250)
+      .scale(width < 768 ? 150 : 250) // change the scale based on the width
       .center([0, 0])
       .rotate([0, -10])
       .translate([width / 2, height / 2]);
