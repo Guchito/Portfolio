@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card/index.astro";
 import IntroCard from "../components/IntroCard.astro";
 import ContactsCard from "../components/ContactsCard.astro";
+import Globe from "../components/Globe";
 import AboutMe from "../components/AboutMe.astro";
 import Now from "../components/Now.astro";
 import { formatDate } from "../lib/helpers";
@@ -57,7 +58,18 @@ import { formatDate } from "../lib/helpers";
       href="/work"
     >
     </Card>
-    <Card colSpan="md:col-span-1" rowSpan="md:row-span-2">
+    <Card
+      colSpan="md:col-span-1"
+      rowSpan="md:row-span-1"
+      title="Countries I visited"
+      href="travel"
+      colorText="text-neutral-900"
+    >
+      <div class="h-full w-full absolute inset-0 -z-10">
+        <Globe client:load />
+    </div>
+  </Card>
+    <Card colSpan="md:col-span-1" rowSpan="md:row-span-1">
       <p class="text-xs">
         © 2025 · Crafted with ♥️ using <a
           href="https://astro.build/"
