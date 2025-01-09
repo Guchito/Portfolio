@@ -4,7 +4,7 @@ image: "./2.png"
 imageAlt: Screenshot of the website.
 description: This application allows you to manage products efficiently with a robust backend leveraging Node.js, TypeScript, Express, and PostgreSQL (via Sequelize with TypeScript) and an intuitive frontend made with React frontend styled using Tailwind CSS
 github: https://github.com/Guchito/Product-Manager
-link: https://product-manager-agustins-projects-99ac35a2.vercel.app/
+link: product-manager-ebon.vercel.app
 order: 2
 ---
 
