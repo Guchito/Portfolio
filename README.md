@@ -1,6 +1,5 @@
-# ⚡️astro-bento-portfolio
+# ⚡️ My personal portfolio website made using `Astro` ⚡️
 
-## A personal portfolio website made using `Astro`.
 
 To view my portfolio **[click here](https://agusgaggero.com)**
 
