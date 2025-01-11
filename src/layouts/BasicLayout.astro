@@ -74,28 +74,37 @@ const schema =
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    
+    <!-- Google tag (gtag.js) -->
+     
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KVXGHNHTG1"></script>
+    <script>
+      (window as any).dataLayer = (window as any).dataLayer || [];
+      function gtag() {
+        (window as any).dataLayer.push(arguments);
+      }
+      (window as any).gtag('js', new Date());
+      (window as any).gtag('config', 'G-KVXGHNHTG1');
+    </script>
+    
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="robots" content="index, follow" />
-    <!-- Basic OG tags for sharing your website's content on platforms like Facebook and LinkedIn -->
+    
+    <!-- Basic OG tags -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={Astro.url.origin} />
-    <meta
-      property="og:image"
-      content={image || `${Astro.url.origin}/og-image.png`}
-    />
+    <meta property="og:image" content={image || `${Astro.url.origin}/og-image.png`} />
+    
     <!-- Basic Twitter Card tags -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta
-      name="twitter:image"
-      content={image || `${Astro.url.origin}/og-image.png`}
-    />
-
+    <meta name="twitter:image" content={image || `${Astro.url.origin}/og-image.png`} />
+    
     <link rel="preconnect" href="https://cdn.fontshare.com" />
     {
       page === "travel" && (
@@ -109,6 +118,8 @@ const schema =
     }
     <script type="application/ld+json" set:html={JSON.stringify(schema)} />
   </head>
+  
+
   <body
     class="bg-darkslate-700 md:h-screen flex flex-col justify-center items-center"
   >
