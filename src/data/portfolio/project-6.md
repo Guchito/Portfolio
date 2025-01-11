@@ -1,27 +1,18 @@
 ---
-title: Expenses Planner
-image: "./6.png"
-imageAlt: Screenshot of the cocktail finder website.
-description: An intuitive expense planner application using React and Vite, featuring budget tracking, expense categorization, and filtering, with JavaScript for logic and CSS for styling to deliver a seamless user experience.
-github: https://github.com/Guchito/Expenses-Planner
-link: https://expenses-budget.netlify.app/
+title: Star Wars Api
+image: "./5.png"
+imageAlt: Screenshot of the Star Wars website.
+description: A Star Wars-themed web application built with JavaScript and React, designed to explore characters, planets, starships, and more from the Star Wars universe. This app consumes data from the Star Wars API (SWAPI).
+github: https://github.com/Guchito/Starwars-React
+link: https://warstar.netlify.app/
 order: 6
 ---
 
-# Expenses Planner with React + Vite
 
-A simple and intuitive expense planner application built with React and Vite. Set a budget, add expenses, and filter by categories to stay on top of your finances.
 
-## Features
 
-* Set a budget and track expenses
-* Add new expenses with category and amount
-* Filter expenses by category
-* View total expenses and budget remaining
+## Technologies Used
 
-## Technologies
-
-* React for building the user interface
-* Vite for fast and efficient development
-* JavaScript for client-side logic
-* CSS for styling
+- **JavaScript**: The primary programming language for this app.
+- **React**: Front-end JavaScript library for building interactive UI.
+- **API Consumption**: Data is fetched from the Star Wars API (SWAPI).

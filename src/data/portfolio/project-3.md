@@ -1,15 +1,27 @@
 ---
-title: Crypto Compare
-image: "./3.png"
-imageAlt: Screenshot of the crypto compare website.
-description: This project is a web application that allows you to check cryptocurrency prices in real-time. Built with React and Vite.
-github: https://github.com/Guchito/crypto
-link: https://cryptocurrencies-compare.netlify.app/
+title: Expenses Planner
+image: "./6.png"
+imageAlt: Screenshot of the cocktail finder website.
+description: An intuitive expense planner application using React and Vite, featuring budget tracking, expense categorization, and filtering, with JavaScript for logic and CSS for styling to deliver a seamless user experience.
+github: https://github.com/Guchito/Expenses-Planner
+link: https://expenses-budget.netlify.app/
 order: 3
 ---
 
+# Expenses Planner with React + Vite
 
-## Technologies Used
+A simple and intuitive expense planner application built with React and Vite. Set a budget, add expenses, and filter by categories to stay on top of your finances.
 
-- **React**: A JavaScript library for building user interfaces.
-- **Vite**: A build tool that provides a fast and lean development experience.
+## Features
+
+* Set a budget and track expenses
+* Add new expenses with category and amount
+* Filter expenses by category
+* View total expenses and budget remaining
+
+## Technologies
+
+* React for building the user interface
+* Vite for fast and efficient development
+* JavaScript for client-side logic
+* CSS for styling

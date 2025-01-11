@@ -1,19 +1,15 @@
 ---
-title: Cocktail Finder
-image: "./4.png"
-imageAlt: Screenshot of the cocktail finder website.
-description: Responsive web application for discovering cocktail recipes, using React, TypeScript, Vite, and Axios for API integration, with Tailwind CSS for styling, Zustand for state management, and Zod for data validation, delivering a fast and user-friendly experience.
-github: https://github.com/Guchito/Cockatil-finder
-link: https://cocktails-and-drinks.netlify.app/
-order: 4
+title: Crypto Compare
+image: "./3.png"
+imageAlt: Screenshot of the crypto compare website.
+description: This project is a web application that allows you to check cryptocurrency prices in real-time. Built with React and Vite.
+github: https://github.com/Guchito/crypto
+link: https://cryptocurrencies-compare.netlify.app/
+order: 3
 ---
+
 
 ## Technologies Used
 
 - **React**: A JavaScript library for building user interfaces.
-- **TypeScript**: A statically typed superset of JavaScript.
 - **Vite**: A build tool that provides a fast and lean development experience.
-- **Tailwind CSS**: A utility-first CSS framework for rapid UI development.
-- **Zod**: A TypeScript-first schema declaration and validation library.
-- **Zustand**: A small, fast, and scalable state management solution.
-- **Axios**: A promise-based HTTP client for making REST API requests.

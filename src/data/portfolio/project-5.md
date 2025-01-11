@@ -1,18 +1,19 @@
 ---
-title: Star Wars Api
-image: "./5.png"
-imageAlt: Screenshot of the Star Wars website.
-description: A Star Wars-themed web application built with JavaScript and React, designed to explore characters, planets, starships, and more from the Star Wars universe. This app consumes data from the Star Wars API (SWAPI).
-github: https://github.com/Guchito/Starwars-React
-link: https://warstar.netlify.app/
+title: Cocktail Finder
+image: "./4.png"
+imageAlt: Screenshot of the cocktail finder website.
+description: Responsive web application for discovering cocktail recipes, using React, TypeScript, Vite, and Axios for API integration. With Tailwind CSS for styling, Zustand for state management, and Zod for data validation, delivering a fast and user-friendly experience.
+github: https://github.com/Guchito/Cockatil-finder
+link: https://cocktails-and-drinks.netlify.app/
 order: 5
 ---
 
-
-
-
 ## Technologies Used
 
-- **JavaScript**: The primary programming language for this app.
-- **React**: Front-end JavaScript library for building interactive UI.
-- **API Consumption**: Data is fetched from the Star Wars API (SWAPI).
+- **React**: A JavaScript library for building user interfaces.
+- **TypeScript**: A statically typed superset of JavaScript.
+- **Vite**: A build tool that provides a fast and lean development experience.
+- **Tailwind CSS**: A utility-first CSS framework for rapid UI development.
+- **Zod**: A TypeScript-first schema declaration and validation library.
+- **Zustand**: A small, fast, and scalable state management solution.
+- **Axios**: A promise-based HTTP client for making REST API requests.
