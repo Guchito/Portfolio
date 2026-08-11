@@ -1,6 +1,5 @@
 import { defineCollection, z } from "astro:content";
 import { glob } from "astro/loaders";
-import { rssSchema } from "@astrojs/rss";
 
 
 const portfolio = defineCollection({
@@ -16,4 +15,16 @@ const portfolio = defineCollection({
     }),
 });
 
-export const collections = { portfolio };
+const work = defineCollection({
+  loader: glob({ pattern: "**/[^_]*.md", base: "./src/data/work" }),
+  schema: z.object({
+    title: z.string(),
+    company: z.string(),
+    description: z.string(),
+    link: z.string(),
+    since: z.union([z.string(), z.number()]),
+    until: z.union([z.string(), z.number()]),
+  }),
+});
+
+export const collections = { portfolio, work };
