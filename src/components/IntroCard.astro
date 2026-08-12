@@ -16,7 +16,7 @@ import { Image } from "astro:assets";
           Hi, I'm <b class="font-bold">Agustin Gaggero</b>, a passionate web developer with a diverse skill set spanning front-end and back-end technologies. 
         </p>
       </div>
-      <div class="flex gap-4">
+      <div class="flex flex-wrap gap-4">
         <a href={LINKS.github} aria-label="github profile" target="_blank">
           <Button aria-label="github profile">
             <Icon name="ri:github-fill" class="h-6" />
@@ -29,11 +29,25 @@ import { Image } from "astro:assets";
             <span class="sr-only">Linkedin Profile</span>
           </Button>
         </a>
-        <a href={LINKS.email} aria-label="linkedin profile" target="_blank">
+        <a href={LINKS.email} aria-label="send me an email" target="_blank">
           <Button aria-label="Send me an email">
             <Icon name="ri:mail-send-line" class="h-6" />
             <span class="sr-only">Send me an email</span>
           </Button>
+        </a>
+        <a
+          href="/cv.pdf"
+          aria-label="download my cv"
+          download="Agustin-Gaggero-CV.pdf"
+          class="relative inline-block group/cv"
+        >
+          <Button aria-label="Download my CV">
+            <Icon name="ri:file-download-line" class="h-6" />
+            <span class="sr-only">Download my CV</span>
+          </Button>
+          <div class="opacity-0 group-hover/cv:opacity-100 group-focus-within/cv:opacity-100 transition-opacity duration-100 pointer-events-none absolute left-1/2 -translate-x-1/2 bottom-full mb-3 w-auto max-h-[70px] p-2 bg-black text-white text-center rounded-lg z-10 shadow-custom shadow-primary-500 border border-primary-500 whitespace-normal after:content-[''] after:block after:rotate-45 after:w-4 after:h-4 after:shadow-custom after:shadow-primary-500 after:absolute after:-bottom-2 after:-translate-x-1/2 after:left-1/2 after:bg-black after:z-20">
+            <p class="w-max">My CV</p>
+          </div>
         </a>
         <Tooltip client:visible>
           <Button aria-label="easter egg btn">
