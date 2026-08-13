@@ -3,6 +3,7 @@ import Card from "./Card/index.astro";
 import Button from "./Button.astro";
 import { Icon } from 'astro-icon/components'
 import { getCollection } from "astro:content";
+import { PRIMARY_TEXT } from "../lib/constants";
 const allJobs = await getCollection("work");
 allJobs.sort((a, b) => a.id.localeCompare(b.id));
 ---
@@ -17,7 +18,7 @@ allJobs.sort((a, b) => a.id.localeCompare(b.id));
             <div class="flex flex-col sm:flex-row gap-1">
                 <div class="flex flex-col p-4 ms:w-4/5">
                     <p class="text-white text-sm">{job.data.since} - {job.data.until} </p>
-                    <h2 class="text-[#e63a46] text-xl font-bold">{job.data.company}</h2>
+                    <h2 class="text-xl font-bold" style={`color: ${PRIMARY_TEXT}`}>{job.data.company}</h2>
                     <h3 class="text-white ">{job.data.title}</h3>
                     <p class="text-sm text-white">{job.data.description}</p>
                     <a class="mt-2" href={job.data.link} aria-label="Website" target="_blank">

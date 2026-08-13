@@ -1,7 +1,9 @@
+export const PRIMARY_TEXT = "#FF6B6B";
+
 export const LINKS = {
   github: "https://github.com/Guchito",
   linkedin: "https://www.linkedin.com/in/agustingaggero/",
-  email: "mailto:agusgaggero@gmail.com"
+  email: "mailto:agusgaggero@gmail.com",
 };
 
 export const loaderAnimation = [

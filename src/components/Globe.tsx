@@ -1,6 +1,7 @@
 import { onMount } from "solid-js";
 import * as d3 from "d3";
 import worldData from "../lib/world.json";
+import { PRIMARY_TEXT } from "../lib/constants";
 
 const GlobeComponent = () => {
   let mapContainer: HTMLDivElement | undefined;
@@ -78,7 +79,7 @@ const GlobeComponent = () => {
       .append("path")
       .attr("d", (d: any) => pathGenerator(d as any))
       .attr("fill", (d: { properties: { name: string } }) =>
-        visitedCountries.includes(d.properties.name) ? "#E63946" : "white"
+        visitedCountries.includes(d.properties.name) ? PRIMARY_TEXT : "white"
       )
       .style("stroke", "black")
       .style("stroke-width", 0.3)

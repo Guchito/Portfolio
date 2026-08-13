@@ -1,5 +1,6 @@
 // uno.config.ts
 import { defineConfig, presetUno, presetWebFonts } from "unocss";
+import { PRIMARY_TEXT } from "./src/lib/constants";
 
 export default defineConfig({
   content: {
@@ -65,15 +66,7 @@ export default defineConfig({
         900: "#0B0B0B",
       },
       primary: {
-        100: "#F9CDD3",
-        200: "#F3A3AA",
-        300: "#EC7981",
-        400: "#E64F59",
-        500: "#E63946",
-        600: "#CF2F3D",
-        700: "#B82534",
-        800: "#A01B2B",
-        900: "#891321",
+        500: PRIMARY_TEXT,
       },
     },
   },

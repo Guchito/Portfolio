@@ -3,6 +3,7 @@ import Card from "./Card/index.astro";
 import { getCollection } from "astro:content";
 import Button from "./Button.astro";
 import { Icon } from 'astro-icon/components'
+import { PRIMARY_TEXT } from "../lib/constants";
 const allProjects = await getCollection("portfolio");
 allProjects.sort((a, b) => a.data.order - b.data.order);
 ---
@@ -16,7 +17,7 @@ allProjects.sort((a, b) => a.data.order - b.data.order);
         <Card  colSpan="md:col-span-4 mb-10" rowSpan="md:row-span-5" href={project.data.link} target="_blank"> 
             <div class="flex flex-col sm:flex-row gap-2">
                 <div class="flex flex-col gap-2 ms:w-4/5">
-                    <h2 class="text-[#e63a46] text-xl font-bold">{project.data.title}</h2>
+                    <h2 class="text-xl font-bold" style={`color: ${PRIMARY_TEXT}`}>{project.data.title}</h2>
                     <p class="text-white">{project.data.description}</p>
                 </div>
                 <img src={project.data.image.src} alt={project.data.imageAlt} class="w-full h-48 object-cover rounded-lg self-center" />
@@ -33,3 +34,4 @@ allProjects.sort((a, b) => a.data.order - b.data.order);
 
     ))
 } 
+1
