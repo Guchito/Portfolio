@@ -39,16 +39,16 @@ const GlobeComponent = () => {
   onMount(() => {
     if (!mapContainer) return;
 
-    const width = mapContainer.clientWidth;
-    const height = 500;
+    // fixed drawing box, the viewBox scales it to the card and keeps it centered at any size
+    const size = 500;
     const sensitivity = 75;
 
     let projection = d3
       .geoOrthographic()
-      .scale(width < 768 ? 150 : 250) // change the scale based on the width
+      .scale(size / 2 - 1)
       .center([0, 0])
       .rotate([0, -10])
-      .translate([width / 2, height / 2]);
+      .translate([size / 2, size / 2]);
 
     const initialScale = projection.scale();
     let pathGenerator = d3.geoPath().projection(projection);
@@ -56,16 +56,18 @@ const GlobeComponent = () => {
     let svg = d3
       .select(mapContainer)
       .append("svg")
-      .attr("width", width)
-      .attr("height", height);
+      .attr("viewBox", `0 0 ${size} ${size}`)
+      .attr("preserveAspectRatio", "xMidYMid slice")
+      .attr("width", "100%")
+      .attr("height", "100%");
 
     svg
       .append("circle")
       .attr("fill", "#EEE")
       .attr("stroke", "#000")
       .attr("stroke-width", "0.2")
-      .attr("cx", width / 2)
-      .attr("cy", height / 2)
+      .attr("cx", size / 2)
+      .attr("cy", size / 2)
       .attr("r", initialScale);
 
     let map = svg.append("g");
@@ -95,7 +97,7 @@ const GlobeComponent = () => {
 
   return (
     <div class="flex flex-col text-white justify-center items-center w-full h-full">
-      <div class="w-full" ref={mapContainer}></div>
+      <div class="w-full h-full" ref={mapContainer}></div>
     </div>
   );
 };
