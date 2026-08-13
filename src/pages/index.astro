@@ -12,7 +12,12 @@ import Now from "../components/Now.astro";
 <script>
   import { stagger, spring, timeline, type TimelineDefinition } from "motion";
   import { loaderAnimation } from "../lib/constants";
-  const cards = document.querySelectorAll(".card");
+  // CSS `order` reshuffles the cards on mobile, so stagger by visual position, not DOM order
+  const cards = [...document.querySelectorAll(".card")].sort((a, b) => {
+    const ra = a.getBoundingClientRect();
+    const rb = b.getBoundingClientRect();
+    return ra.top - rb.top || ra.left - rb.left;
+  });
 
   const sequence = [
     loaderAnimation,
@@ -80,3 +85,17 @@ import Now from "../components/Now.astro";
     </Card>
   </main>
 </Layout>
+
+<style is:global>
+  /* Mobile-only reading order: intro, about, experience, projects, now, contact, countries, footer */
+  @media (max-width: 767px) {
+    main > :nth-child(1) { order: 1; }
+    main > :nth-child(2) { order: 2; }
+    main > :nth-child(6) { order: 3; }
+    main > :nth-child(4) { order: 4; }
+    main > :nth-child(5) { order: 5; }
+    main > :nth-child(3) { order: 6; }
+    main > :nth-child(7) { order: 7; }
+    main > :nth-child(8) { order: 8; }
+  }
+</style>
