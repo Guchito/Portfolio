@@ -72,8 +72,8 @@ const {
             {links.map((link) => (
               <a href={link.href} aria-label={link.label} target="_blank">
                 <Button aria-label={link.label}>
-                  <Icon name={link.icon} class="h-5" />
-                  <span class="ml-2">{link.label}</span>
+                  <Icon name={link.icon} class="h-6" />
+                  <span class="sr-only">{link.label}</span>
                 </Button>
               </a>
             ))}
