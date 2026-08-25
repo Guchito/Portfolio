@@ -1,6 +1,7 @@
 ---
 import Globe from "../components/Globe";
 import BasicLayout from "../layouts/BasicLayout.astro";
+import BackLink from "../components/BackLink.astro";
 ---
 
 <script>
@@ -22,11 +23,9 @@ import BasicLayout from "../layouts/BasicLayout.astro";
   description="A 3d globe showing countries that I have visited so far"
   page="travel"
 >
-  <a
-    href="/"
-    class="text-white absolute bg-neutral-900 hover:bg-neutral-800 top-4 left-4 px-4 py-2 border-1 border-solid border-neutral-600 rounded-lg"
-    >Back</a
-  >
+  <BackLink />
 
-  <Globe client:load />
+  <div class="h-screen w-screen">
+    <Globe client:load />
+  </div>
 </BasicLayout>

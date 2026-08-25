@@ -1,0 +1,31 @@
+---
+import Project from "../../components/Project.astro";
+import Layout from "../../layouts/Layout.astro";
+import BackLink from "../../components/BackLink.astro";
+---
+
+<script>
+  import { timeline, type TimelineDefinition } from "motion";
+  import { loaderAnimation } from "../../lib/constants";
+
+  const sequence = [loaderAnimation];
+
+  timeline(sequence as TimelineDefinition);
+</script>
+
+<Layout
+  title="Projects | Agustin Gaggero"
+  description="Personal projects by Agustin Gaggero — an AI running coach, a product management app and an e-commerce store, each with a full case study."
+>
+  <BackLink />
+  <main
+    class="w-full flex flex-col justify-start items-start max-w-3xl mx-auto p-8"
+  >
+    <h1 class="text-4xl font-bold mb-4 mt-20 text-neutral-100">Projects</h1>
+    <p class="text-gray-400 mb-8">
+      What I build when I'm not doing my day job. Each project has a case study
+      with the architecture, decisions and links.
+    </p>
+    <Project />
+  </main>
+</Layout>
