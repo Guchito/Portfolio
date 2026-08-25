@@ -1,5 +1,5 @@
 // uno.config.ts
-import { defineConfig, presetUno, presetWebFonts } from "unocss";
+import { defineConfig, presetUno, presetTypography } from "unocss";
 import { PRIMARY_TEXT } from "./src/lib/constants";
 
 export default defineConfig({
@@ -72,11 +72,10 @@ export default defineConfig({
   },
   presets: [
     presetUno(),
-    presetWebFonts({
-      provider: "fontshare",
-      fonts: {
-        sans: ["Cabinet Grotesk", "Satoshi"],
-        serif: "Zodiak",
+    presetTypography({
+      cssExtend: {
+        a: { color: PRIMARY_TEXT },
+        "h1,h2,h3,h4": { "font-family": "CabinetGrotesk, sans-serif" },
       },
     }),
   ],

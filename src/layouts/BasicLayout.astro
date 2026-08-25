@@ -4,114 +4,70 @@ import { LINKS } from "../lib/constants";
 interface Props {
   title: string;
   description: string;
-  page?: "travel" | "blog";
-  slug?: string | undefined;
-  pubDate?: string;
+  page?: "travel";
 }
 
-const { title, description, page, slug, pubDate } = Astro.props;
+const { title, description, page } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
 const image =
   page === "travel"
-    ? `${Astro.url.origin}/globe_preview.webp"`
+    ? `${Astro.url.origin}/globe_preview.png`
     : `${Astro.url.origin}/og-image.png`;
 
-const schema =
-  page !== "blog"
-    ? {
-        "@context": "http://schema.org",
-        "@type": "Person",
-        name: "Agustin",
-        url: Astro.url.origin,
-        sameAs: [LINKS.linkedin, LINKS.github],
-        image: `${Astro.url.origin}/og-image.png`,
-        jobTitle: "Full-stack Developer",
-        worksFor: {
-          "@type": "Organization",
-          name: "Self-Employed",
-          address: {
-            "@type": "PostalAddress",
-            addressLocality: "Denmark",
-            addressCountry: "DK",
-          },
-        },
-        nationality: {
-          "@type": "Country",
-          name: "Spain",
-        },
-      }
-    : {
-        "@context": "http://schema.org",
-        "@type": "BlogPosting",
-        mainEntityOfPage: {
-          "@type": "WebPage",
-          "@id": `${Astro.url.origin}/blog/${slug}`,
-        },
-        headline: title || title,
-        description: description || title,
-        image: `${Astro.url.origin}/og-image.png`, //TODO: dynamic
-        author: {
-          "@type": "Person",
-          name: "Agustin",
-          url: Astro.url.origin,
-          sameAs: [LINKS.linkedin, LINKS.github],
-        },
-        publisher: {
-          "@type": "Organization",
-          name: "Agustin",
-          logo: {
-            "@type": "ImageObject",
-            url: `${Astro.url.origin}/og-image.png`,
-          },
-        },
-        datePublished: pubDate || new Date().toISOString(),
-        dateModified: pubDate || new Date().toISOString(),
-      };
+const schema = {
+  "@context": "http://schema.org",
+  "@type": "Person",
+  name: "Agustin Gaggero",
+  url: Astro.url.origin,
+  sameAs: [LINKS.linkedin, LINKS.github],
+  image: `${Astro.url.origin}/og-image.png`,
+  jobTitle: "Full-Stack Software Engineer",
+  worksFor: {
+    "@type": "Organization",
+    name: "Nordic Charge",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Copenhagen",
+      addressCountry: "DK",
+    },
+  },
+  nationality: {
+    "@type": "Country",
+    name: "Spain",
+  },
+};
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-  
-    
+
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="robots" content="index, follow" />
-    
+    <link rel="canonical" href={canonical} />
+
     <!-- Basic OG tags -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content={Astro.url.origin} />
-    <meta property="og:image" content={image || `${Astro.url.origin}/og-image.png`} />
-    
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={image} />
+
     <!-- Basic Twitter Card tags -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={image || `${Astro.url.origin}/og-image.png`} />
-    
-    <link rel="preconnect" href="https://cdn.fontshare.com" />
-    {
-      page === "travel" && (
-        <link rel="canonical" href={`${Astro.url.origin}/travel`} />
-      )
-    }
-    {
-      page === "blog" && (
-        <link rel="canonical" href={`${Astro.url.origin}/blog/${slug}`} />
-      )
-    }
+    <meta name="twitter:image" content={image} />
+
     <script type="application/ld+json" set:html={JSON.stringify(schema)} />
   </head>
-  
 
-  <body
-    class="bg-darkslate-700 md:h-screen flex flex-col justify-center items-center"
-  >
+  <body class="bg-darkslate-700 flex flex-col items-center">
     <slot name="loader" />
     <slot />
   </body>
@@ -135,6 +91,10 @@ const schema =
     font-weight: 100 1000;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     margin: 0;
     font-family: "Satoshi", sans-serif;
@@ -147,7 +107,7 @@ const schema =
   h4,
   h5,
   h6 {
-    font-family: "Cabinet Grotesk", sans-serif;
+    font-family: "CabinetGrotesk", sans-serif;
   }
   p {
     font-family: "Satoshi";
