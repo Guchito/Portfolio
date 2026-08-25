@@ -25,7 +25,10 @@ import BackLink from "../components/BackLink.astro";
 >
   <BackLink />
 
-  <div class="h-screen w-screen">
-    <Globe client:load />
+  <!-- Globe's SVG uses preserveAspectRatio="slice", so its box must stay square or it scales up and crops -->
+  <div class="h-screen w-full flex items-center justify-center">
+    <div style="width: min(100vw, 100vh); height: min(100vw, 100vh);">
+      <Globe client:load />
+    </div>
   </div>
 </BasicLayout>

@@ -25,11 +25,6 @@ import { Image } from "astro:assets";
       </div>
       <!-- 110px reserved on mobile = the memoji's visible face; tune with the image's right-[-110px] -->
       <div class="flex flex-wrap gap-3 md:gap-4 max-w-[calc(100%-110px)] md:max-w-none">
-        <a href="/work" aria-label="view my work">
-          <Button aria-label="View my work">
-            <span class="font-bold whitespace-nowrap">View my work</span>
-          </Button>
-        </a>
         <a href={LINKS.github} aria-label="github profile" target="_blank">
           <Button aria-label="github profile">
             <Icon name="ri:github-fill" class="h-6" />
