@@ -6,12 +6,6 @@ import ContactsCard from "../components/ContactsCard.astro";
 import Globe from "../components/Globe";
 import AboutMe from "../components/AboutMe.astro";
 import Now from "../components/Now.astro";
-import { getCollection } from "astro:content";
-import { PRIMARY_TEXT } from "../lib/constants";
-
-const jobs = (await getCollection("work")).sort((a, b) =>
-  a.id.localeCompare(b.id)
-);
 ---
 
 <script>
@@ -45,7 +39,9 @@ const jobs = (await getCollection("work")).sort((a, b) =>
   title="Agustin Gaggero — Full-Stack Software Engineer"
   description="Full-Stack Software Engineer based in Copenhagen, building production web applications, APIs, e-commerce platforms and integrations."
 >
-  <main class="text-white w-full flex flex-col items-center gap-16 pb-16">
+  <main
+    class="text-white w-full flex flex-col items-center md:min-h-screen md:justify-center"
+  >
     <div
       id="bento"
       class="m-auto p-2 grid gap-2 max-w-6xl overflow-hidden relative w-full sm:p-4 sm:gap-2 md:grid-cols-3 md:gap-3 md:p-6 lg:h-screen lg:grid-rows-8 lg:grid-cols-4 lg:gap-4 lg:max-h-[800px]"
@@ -96,62 +92,6 @@ const jobs = (await getCollection("work")).sort((a, b) =>
         </p>
       </Card>
     </div>
-
-    <section
-      id="selected-work"
-      class="w-full max-w-6xl px-2 sm:px-4 md:px-6 flex flex-col gap-4 scroll-mt-8"
-    >
-      <h2 class="text-3xl font-bold m-0">Selected work</h2>
-      <div class="grid gap-4 md:grid-cols-2">
-        <Card href="/work/nordic-charge" title="Nordic Charge">
-          <p class="font-light m-0">Digital ecosystem for EV charging.</p>
-          <p class="text-sm text-gray-400 m-0 mt-1">
-            Marketplace · Partner Portal · API v2 · Commerce integrations
-          </p>
-          <p class="font-bold mt-4 mb-0" style={`color: ${PRIMARY_TEXT}`}>
-            View case study →
-          </p>
-        </Card>
-        <Card href="/projects/gunna" title="Gunna">
-          <p class="font-light m-0">
-            AI running coach built around real training data.
-          </p>
-          <p class="text-sm text-gray-400 m-0 mt-1">
-            Next.js · TypeScript · PostgreSQL · Anthropic SDK
-          </p>
-          <p class="font-bold mt-4 mb-0" style={`color: ${PRIMARY_TEXT}`}>
-            View case study →
-          </p>
-        </Card>
-      </div>
-      <a href="/projects" class="font-bold" style={`color: ${PRIMARY_TEXT}`}>
-        All projects →
-      </a>
-    </section>
-
-    <section class="w-full max-w-6xl px-2 sm:px-4 md:px-6 flex flex-col gap-4">
-      <h2 class="text-3xl font-bold m-0">Work experience</h2>
-      <div class="flex flex-col gap-4">
-        {
-          jobs.map((job) => (
-            <div class="flex flex-col md:flex-row md:items-baseline gap-1 md:gap-6 border-b border-darkslate-100 pb-4">
-              <p class="text-sm text-gray-400 md:w-36 flex-none m-0">
-                {job.data.since} – {job.data.until}
-              </p>
-              <div>
-                <h3 class="font-bold m-0" style={`color: ${PRIMARY_TEXT}`}>
-                  {job.data.company}
-                </h3>
-                <p class="text-sm m-0">{job.data.title}</p>
-              </div>
-            </div>
-          ))
-        }
-      </div>
-      <a href="/work" class="font-bold" style={`color: ${PRIMARY_TEXT}`}>
-        Full work experience →
-      </a>
-    </section>
   </main>
 </Layout>
 
