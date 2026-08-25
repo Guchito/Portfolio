@@ -5,16 +5,17 @@ import { LINKS } from "../lib/constants";
 
 <Card colSpan="md:col-span-1" rowSpan="md:row-span-4">
   <div class="h-full">
-    <header class="flex items-center">
-      <h1 class="text-white text-xl font-bold">
-        Let's start working together!
-      </h1>
+    <header class="flex flex-col">
+      <h2 class="text-white text-xl font-bold m-0">Let's talk.</h2>
+      <p class="text-sm font-light text-gray-400 m-0 mt-1">
+        Interested in working together, or just want to say hello?
+      </p>
     </header>
     <div class="flex flex-wrap gap-6 text-base md:gap-2 md:text-sm lg:block lg:text-base">
       <address class="flex flex-col mt-4">
         <h2 class="text-gray-500">Contact Details</h2>
         <a href={`mailto:${LINKS.email}`}>{LINKS.email}</a>
-        <p>Denmark</p>
+        <p>Copenhagen, Denmark</p>
       </address>
       <div class="flex flex-col mt-4 w-fit">
         <h2 class="text-gray-500">Socials</h2>

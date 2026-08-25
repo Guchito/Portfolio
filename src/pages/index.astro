@@ -6,14 +6,19 @@ import ContactsCard from "../components/ContactsCard.astro";
 import Globe from "../components/Globe";
 import AboutMe from "../components/AboutMe.astro";
 import Now from "../components/Now.astro";
+import { getCollection } from "astro:content";
+import { PRIMARY_TEXT } from "../lib/constants";
 
+const jobs = (await getCollection("work")).sort((a, b) =>
+  a.id.localeCompare(b.id)
+);
 ---
 
 <script>
   import { stagger, spring, timeline, type TimelineDefinition } from "motion";
   import { loaderAnimation } from "../lib/constants";
-  // CSS `order` reshuffles the cards on mobile, so stagger by visual position, not DOM order
-  const cards = [...document.querySelectorAll(".card")].sort((a, b) => {
+  // CSS `order` reshuffles cards on mobile, so stagger by visual position, not DOM order
+  const cards = [...document.querySelectorAll("#bento .card")].sort((a, b) => {
     const ra = a.getBoundingClientRect();
     const rb = b.getBoundingClientRect();
     return ra.top - rb.top || ra.left - rb.left;
@@ -37,65 +42,129 @@ import Now from "../components/Now.astro";
 </script>
 
 <Layout
-  title="Agustin Gaggero - Full-stack web Developer"
-  description="I'm a developer based in Denmark, My primary tools of choice includes: JavaScript, Typescript, React, Nodejs, Astro, MySQL, PostgreSQL and Tailwind CSS"
-> 
-  <main
-    class="text-white m-auto p-2 grid gap-2 max-w-6xl overflow-hidden relative w-full sm:p-4 sm:gap-2 md:grid-cols-3 md:gap-3 md:p-6 lg:h-screen lg:grid-rows-8 lg:grid-cols-4 lg:gap-4 lg:max-h-[800px]"
-  >
-    <IntroCard />
-    <AboutMe />
-    <ContactsCard />
-    <Card
-      colSpan="md:col-span-2"
-      rowSpan="md:row-span-2"
-      title="Projects & Portfolio"
-      href="/projects"
-    > 
-      <p class= "text-xl md:text-2xl font-bold flex items-center" >Check my latest creations</p>
-    </Card>
-    <Now />
-    <Card
-      colSpan="md:col-span-1"
-      rowSpan="md:row-span-2 flex gap-4"
-      title="Professional Experience"
-      href="/work"
+  title="Agustin Gaggero — Full-Stack Software Engineer"
+  description="Full-Stack Software Engineer based in Copenhagen, building production web applications, APIs, e-commerce platforms and integrations."
+>
+  <main class="text-white w-full flex flex-col items-center gap-16 pb-16">
+    <div
+      id="bento"
+      class="m-auto p-2 grid gap-2 max-w-6xl overflow-hidden relative w-full sm:p-4 sm:gap-2 md:grid-cols-3 md:gap-3 md:p-6 lg:h-screen lg:grid-rows-8 lg:grid-cols-4 lg:gap-4 lg:max-h-[800px]"
     >
-    </Card>
-    <Card
-      colSpan="md:col-span-1"
-      rowSpan="md:row-span-1"
-      title="Countries I visited"
-      href="/travel"
-      colorText="text-neutral-900"
-      customClass="text-center"
-    >
-      <div class="h-full w-full absolute inset-0 -z-10">
-        <Globe client:load />
+      <IntroCard />
+      <AboutMe />
+      <ContactsCard />
+      <Card
+        colSpan="md:col-span-2"
+        rowSpan="md:row-span-2"
+        title="Featured project"
+        href="/projects/gunna"
+      >
+        <p class="text-xl md:text-2xl font-bold flex items-center m-0">
+          Gunna — AI Running Coach
+        </p>
+        <p class="text-sm font-light m-0 mt-1">
+          Watch data in, real coaching out. Next.js · TypeScript · AI
+        </p>
+      </Card>
+      <Now />
+      <Card
+        colSpan="md:col-span-1"
+        rowSpan="md:row-span-2 flex gap-4"
+        title="Professional Experience"
+        href="/work"
+      >
+      </Card>
+      <Card
+        colSpan="md:col-span-1"
+        rowSpan="md:row-span-1"
+        title="Based in Copenhagen"
+        href="/travel"
+        colorText="text-neutral-900"
+        customClass="text-center"
+      >
+        <div class="h-full w-full absolute inset-0 -z-10">
+          <Globe client:load />
+        </div>
+      </Card>
+      <Card colSpan="md:col-span-1" rowSpan="md:row-span-1">
+        <p class="text-xs leading-tight my-auto">
+          © {new Date().getFullYear()} · Crafted with ♥️ using <a
+            href="https://astro.build/"
+            target="_blank"
+            class="text-primary-500">Astro</a
+          > by Agustin.
+        </p>
+      </Card>
     </div>
-  </Card>
-    <Card colSpan="md:col-span-1" rowSpan="md:row-span-1">
-      <p class="text-xs leading-tight my-auto">
-        © {new Date().getFullYear()} · Crafted with ♥️ using <a
-          href="https://astro.build/"
-          target="_blank"
-          class="text-primary-500">Astro</a
-        > by Agustin.
-      </p>
-    </Card>
+
+    <section
+      id="selected-work"
+      class="w-full max-w-6xl px-2 sm:px-4 md:px-6 flex flex-col gap-4 scroll-mt-8"
+    >
+      <h2 class="text-3xl font-bold m-0">Selected work</h2>
+      <div class="grid gap-4 md:grid-cols-2">
+        <Card href="/work/nordic-charge" title="Nordic Charge">
+          <p class="font-light m-0">Digital ecosystem for EV charging.</p>
+          <p class="text-sm text-gray-400 m-0 mt-1">
+            Marketplace · Partner Portal · API v2 · Commerce integrations
+          </p>
+          <p class="font-bold mt-4 mb-0" style={`color: ${PRIMARY_TEXT}`}>
+            View case study →
+          </p>
+        </Card>
+        <Card href="/projects/gunna" title="Gunna">
+          <p class="font-light m-0">
+            AI running coach built around real training data.
+          </p>
+          <p class="text-sm text-gray-400 m-0 mt-1">
+            Next.js · TypeScript · PostgreSQL · Anthropic SDK
+          </p>
+          <p class="font-bold mt-4 mb-0" style={`color: ${PRIMARY_TEXT}`}>
+            View case study →
+          </p>
+        </Card>
+      </div>
+      <a href="/projects" class="font-bold" style={`color: ${PRIMARY_TEXT}`}>
+        All projects →
+      </a>
+    </section>
+
+    <section class="w-full max-w-6xl px-2 sm:px-4 md:px-6 flex flex-col gap-4">
+      <h2 class="text-3xl font-bold m-0">Work experience</h2>
+      <div class="flex flex-col gap-4">
+        {
+          jobs.map((job) => (
+            <div class="flex flex-col md:flex-row md:items-baseline gap-1 md:gap-6 border-b border-darkslate-100 pb-4">
+              <p class="text-sm text-gray-400 md:w-36 flex-none m-0">
+                {job.data.since} – {job.data.until}
+              </p>
+              <div>
+                <h3 class="font-bold m-0" style={`color: ${PRIMARY_TEXT}`}>
+                  {job.data.company}
+                </h3>
+                <p class="text-sm m-0">{job.data.title}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+      <a href="/work" class="font-bold" style={`color: ${PRIMARY_TEXT}`}>
+        Full work experience →
+      </a>
+    </section>
   </main>
 </Layout>
 
 <style is:global>
-  /* Mobile-only reading order: intro, about, experience, projects, now, contact, countries, footer */
+  /* Mobile-only reading order: intro, about, nordic charge, gunna, experience, contact, countries, footer */
   @media (max-width: 767px) {
-    main > :nth-child(1) { order: 1; }
-    main > :nth-child(2) { order: 2; }
-    main > :nth-child(6) { order: 3; }
-    main > :nth-child(4) { order: 4; }
-    main > :nth-child(5) { order: 5; }
-    main > :nth-child(3) { order: 6; }
-    main > :nth-child(7) { order: 7; }
-    main > :nth-child(8) { order: 8; }
+    #bento > :nth-child(1) { order: 1; }
+    #bento > :nth-child(2) { order: 2; }
+    #bento > :nth-child(5) { order: 3; }
+    #bento > :nth-child(4) { order: 4; }
+    #bento > :nth-child(6) { order: 5; }
+    #bento > :nth-child(3) { order: 6; }
+    #bento > :nth-child(7) { order: 7; }
+    #bento > :nth-child(8) { order: 8; }
   }
 </style>
