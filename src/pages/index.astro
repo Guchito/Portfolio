@@ -49,25 +49,27 @@ import Now from "../components/Now.astro";
       <IntroCard />
       <AboutMe />
       <ContactsCard />
-      <Card
-        colSpan="md:col-span-2"
-        rowSpan="md:row-span-2"
-        title="Featured project"
-        href="/projects/gunna"
-      >
-        <p class="text-xl md:text-2xl font-bold flex items-center m-0">
-          Gunna — AI Running Coach
-        </p>
-        <p class="text-sm font-light m-0 mt-1">
-          Watch data in, real coaching out. Next.js · TypeScript · AI
-        </p>
-      </Card>
       <Now />
       <Card
         colSpan="md:col-span-1"
-        rowSpan="md:row-span-2 flex gap-4"
+        rowSpan="md:row-span-2"
         title="Professional Experience"
         href="/work"
+      >
+      </Card>
+      <Card colSpan="md:col-span-1" rowSpan="md:row-span-2" href="/projects/gunna">
+        <div class="my-auto w-full">
+          <h2>Gunna</h2>
+          <p class="text-xs mt-2">
+            AI running coach — Next.js · TypeScript · PostgreSQL
+          </p>
+        </div>
+      </Card>
+      <Card
+        colSpan="md:col-span-1"
+        rowSpan="md:row-span-2"
+        title="Projects"
+        href="/projects"
       >
       </Card>
       <Card
@@ -96,15 +98,16 @@ import Now from "../components/Now.astro";
 </Layout>
 
 <style is:global>
-  /* Mobile-only reading order: intro, about, nordic charge, gunna, experience, contact, countries, footer */
+  /* Mobile-only reading order: intro, about, nordic charge, experience, gunna, projects, contact, countries, footer */
   @media (max-width: 767px) {
     #bento > :nth-child(1) { order: 1; }
     #bento > :nth-child(2) { order: 2; }
-    #bento > :nth-child(5) { order: 3; }
-    #bento > :nth-child(4) { order: 4; }
+    #bento > :nth-child(4) { order: 3; }
+    #bento > :nth-child(5) { order: 4; }
     #bento > :nth-child(6) { order: 5; }
-    #bento > :nth-child(3) { order: 6; }
-    #bento > :nth-child(7) { order: 7; }
+    #bento > :nth-child(7) { order: 6; }
+    #bento > :nth-child(3) { order: 7; }
     #bento > :nth-child(8) { order: 8; }
+    #bento > :nth-child(9) { order: 9; }
   }
 </style>
