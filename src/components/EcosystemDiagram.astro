@@ -1,0 +1,37 @@
+---
+// Order/data flow across Nordic Charge's systems, in the bento visual language.
+---
+
+<div class="not-prose flex flex-col items-center gap-1 my-8 text-neutral-100 font-sans">
+  <div class="grid grid-cols-2 gap-3 w-full max-w-xl">
+    <div class="rounded-lg border border-darkslate-100 bg-darkslate-500 p-3 text-center">
+      <p class="m-0 font-bold">Marketplace</p>
+      <p class="m-0 text-xs text-gray-400">
+        WordPress · WooCommerce<br />custom theme + B2B plugin
+      </p>
+    </div>
+    <div class="rounded-lg border border-darkslate-100 bg-darkslate-500 p-3 text-center">
+      <p class="m-0 font-bold">Partner storefronts</p>
+      <p class="m-0 text-xs text-gray-400">
+        Shopify · WooCommerce<br />plugin & webhook intake
+      </p>
+    </div>
+    <div class="text-center text-gray-400 text-sm">
+      ↓ <span class="text-xs">API v2 · OAuth m2m</span>
+    </div>
+    <div class="text-center text-gray-400 text-sm">
+      ↓ <span class="text-xs">signed webhooks · API v2</span>
+    </div>
+  </div>
+  <div class="rounded-lg border border-primary-500 bg-darkslate-500 p-4 text-center w-full max-w-xl">
+    <p class="m-0 font-bold">Partner Portal</p>
+    <p class="m-0 text-xs text-gray-400">
+      Laravel · Filament · Livewire — orders, installers, inventory, invoicing
+    </p>
+  </div>
+  <div class="text-center text-gray-400 text-sm">↓</div>
+  <div class="rounded-lg border border-darkslate-100 bg-darkslate-500 p-3 text-center w-full max-w-xl">
+    <p class="m-0 font-bold">Charging & logistics platforms</p>
+    <p class="m-0 text-xs text-gray-400">Monta · Zaptec · EOSVolt · 3PL shipping</p>
+  </div>
+</div>

@@ -1,0 +1,176 @@
+---
+import CaseStudyLayout from "../../layouts/CaseStudyLayout.astro";
+import EcosystemDiagram from "../../components/EcosystemDiagram.astro";
+---
+
+<CaseStudyLayout
+  title="Nordic Charge | Agustin Gaggero"
+  description="Full-stack engineering across Nordic Charge's digital ecosystem — B2B marketplace, partner APIs, commerce integrations and the public website."
+  heading="Building Nordic Charge's digital ecosystem"
+  role="Full-Stack Developer"
+  timeframe="May 2025 – Present"
+  stack={[
+    "PHP",
+    "Laravel",
+    "Filament",
+    "WordPress",
+    "WooCommerce",
+    "MySQL",
+    "TypeScript",
+    "React",
+    "Astro",
+  ]}
+  links={[
+    {
+      label: "nordiccharge.com",
+      href: "https://www.nordiccharge.com",
+      icon: "ri:external-link-line",
+    },
+  ]}
+  backHref="/work"
+>
+  <p>
+    At Nordic Charge I work across the production systems that connect
+    partners, products, orders and EV charging operations. My responsibilities
+    range from building new applications and integrations to maintaining and
+    expanding existing platforms — the public website, the B2B marketplace,
+    the Partner Portal and its APIs, and the commerce integrations that feed
+    orders into it.
+  </p>
+
+  <h2>The ecosystem</h2>
+  <EcosystemDiagram />
+  <p>
+    Orders reach the Partner Portal through several channels. The marketplace
+    extends WooCommerce with custom functionality and talks to the Portal
+    through API v2, authenticated machine-to-machine. Partners running their
+    own Shopify or WooCommerce stores feed orders in through signed webhooks
+    or the integration plugin. The Portal orchestrates everything downstream —
+    fulfilment pipelines, installer field operations, inventory and invoicing —
+    and connects to charge-point platforms such as Monta, Zaptec and EOSVolt.
+  </p>
+
+  <h2>Partner Portal & API v2</h2>
+  <p>
+    The Partner Portal predates my involvement: a multi-tenant Laravel,
+    Filament and Livewire platform covering order management, installer
+    operations, team inventories and invoicing. Since joining in May 2025 I
+    have become one of its primary maintainers — several hundred commits
+    across order workflows, partner operations and integrations.
+  </p>
+  <p>
+    The piece I designed and built from scratch is <strong>API v2</strong>, the
+    Portal's machine-to-machine REST API for partner integrations:
+  </p>
+  <ul>
+    <li>
+      <strong>OAuth 2.0 client-credentials</strong> (Laravel Passport) — no
+      user context; each API client is bound to exactly one partner team, so
+      team binding is the authorization boundary.
+    </li>
+    <li>
+      <strong>Opaque public IDs</strong> — every resource is addressed by a
+      ULID; internal numeric keys are never exposed.
+    </li>
+    <li>
+      <strong>Cursor pagination</strong> across all list endpoints.
+    </li>
+    <li>
+      <strong>Idempotent order creation</strong> — orders are deduplicated on
+      two keys in a deliberate order, backed by a database unique constraint,
+      so a store mid-migration between webhook intake and the plugin can't
+      create duplicates: both paths recognise each other's orders. Race losers
+      re-read and return the winning row instead of failing.
+    </li>
+  </ul>
+  <p>
+    The API ships with generated reference docs, a Postman collection and a
+    feature-test suite covering the full OAuth round-trip, team scoping,
+    pagination and idempotency.
+  </p>
+
+  <h2>Marketplace</h2>
+  <p>
+    The Nordic Charge B2B marketplace lets partners order charging equipment
+    directly. It deliberately builds on WordPress and WooCommerce rather than
+    a custom commerce engine — my work is the custom theme and the B2B plugin
+    that turn a stock WooCommerce install into a partner store:
+  </p>
+  <ul>
+    <li>
+      <strong>Portal-backed sign-in</strong> — partners log in with their
+      Partner Portal credentials; the Portal remains the identity authority
+      and accounts are provisioned locally on first login.
+    </li>
+    <li>
+      <strong>Members-only storefront</strong> — guests see only the front
+      page and a request-access form; products and prices are gated to
+      authenticated partners.
+    </li>
+    <li>
+      <strong>Invoice checkout</strong> — a payment gateway that fits B2B
+      terms, with WooCommerce checkout-blocks support.
+    </li>
+    <li>
+      <strong>Catalogue importer</strong> — an idempotent tool that mirrors
+      the Portal's product catalogue into WooCommerce, collapsing colour
+      ranges into variable products while keeping every variation mapped to
+      its Portal counterpart.
+    </li>
+  </ul>
+  <p>
+    The theme shares its design system with the public website, so the
+    marketplace looks and feels like Nordic Charge across two very different
+    stacks.
+  </p>
+
+  <h2>Commerce integrations</h2>
+  <p>
+    Before the integration plugin existed, WooCommerce orders reached Nordic
+    Charge through a generic webhook, and matching what was actually ordered
+    meant guessing from SKU strings and product titles. I authored
+    <strong>Nordic Charge for WooCommerce</strong>, a plugin any partner store
+    can install, built around explicit mapping instead of guessing:
+  </p>
+  <ul>
+    <li>
+      Merchants map their catalogue to Portal products once — with a
+      parent/attribute model that keeps mappings minimal (a charger in six
+      colours and three installation tiers needs 13 mappings, not 30).
+    </li>
+    <li>
+      Orders are submitted through API v2 with a strict split between
+      <strong>terminal and retryable failures</strong> — bad data fails fast
+      with a note naming the field; network and server errors retry on a
+      backoff ladder without ever double-submitting.
+    </li>
+    <li>
+      Submission state lives in HPOS-safe order meta, and every admin surface
+      (order column, meta box, resubmit action) works on both classic and
+      high-performance order storage.
+    </li>
+    <li>
+      The plugin ships with 400+ unit and integration tests, static analysis
+      at PHPStan level 8, and a CI matrix across PHP and WooCommerce versions.
+    </li>
+  </ul>
+
+  <h2>Website</h2>
+  <p>
+    I am responsible for the development and ongoing ownership of
+    <a href="https://www.nordiccharge.com" target="_blank">nordiccharge.com</a> —
+    an Astro and React site with around 26 routes in English and Danish,
+    serverless contact and careers endpoints, and a hybrid content setup where
+    non-technical colleagues publish insights and team updates through a
+    Git-based CMS that commits straight to the repo. Along the way that has
+    meant practical engineering: a custom rehype plugin that turns the CMS's
+    markup quirks into styled callouts, i18n with locale fallbacks, and
+    accessibility touches like reduced-motion support.
+  </p>
+
+  <h2>Technology</h2>
+  <p>
+    PHP · Laravel · Filament · Livewire · WordPress · WooCommerce · MySQL ·
+    OAuth 2.0 / Laravel Passport · TypeScript · React · Astro · GitHub Actions
+  </p>
+</CaseStudyLayout>
