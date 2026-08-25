@@ -5,7 +5,7 @@ import IntroCard from "../components/IntroCard.astro";
 import ContactsCard from "../components/ContactsCard.astro";
 import Globe from "../components/Globe";
 import AboutMe from "../components/AboutMe.astro";
-import Now from "../components/Now.astro";
+import ExperienceCard from "../components/ExperienceCard.astro";
 ---
 
 <script>
@@ -49,14 +49,7 @@ import Now from "../components/Now.astro";
       <IntroCard />
       <AboutMe />
       <ContactsCard />
-      <Now />
-      <Card
-        colSpan="md:col-span-1"
-        rowSpan="md:row-span-2"
-        title="Professional Experience"
-        href="/work"
-      >
-      </Card>
+      <ExperienceCard />
       <Card colSpan="md:col-span-1" rowSpan="md:row-span-2" href="/projects/gunna">
         <div class="my-auto w-full">
           <h2>Gunna</h2>
@@ -73,8 +66,8 @@ import Now from "../components/Now.astro";
       >
       </Card>
       <Card
-        colSpan="md:col-span-1"
-        rowSpan="md:row-span-1"
+        colSpan="md:col-span-1 md:col-start-3 lg:col-start-auto"
+        rowSpan="md:row-span-2 md:row-start-5 lg:row-span-1 lg:row-start-auto"
         title="Based in Copenhagen"
         href="/travel"
         colorText="text-neutral-900"
@@ -84,7 +77,10 @@ import Now from "../components/Now.astro";
           <Globe client:load />
         </div>
       </Card>
-      <Card colSpan="md:col-span-1" rowSpan="md:row-span-1">
+      <Card
+        colSpan="md:col-span-1 md:col-start-3 lg:col-start-auto"
+        rowSpan="md:row-span-2 md:row-start-7 lg:row-span-1 lg:row-start-auto"
+      >
         <p class="text-xs leading-tight my-auto">
           © {new Date().getFullYear()} · Crafted with ♥️ using <a
             href="https://astro.build/"
@@ -98,16 +94,15 @@ import Now from "../components/Now.astro";
 </Layout>
 
 <style is:global>
-  /* Mobile-only reading order: intro, about, nordic charge, experience, gunna, projects, contact, countries, footer */
+  /* Mobile-only reading order: intro, about, experience, gunna, projects, contact, countries, footer */
   @media (max-width: 767px) {
     #bento > :nth-child(1) { order: 1; }
     #bento > :nth-child(2) { order: 2; }
     #bento > :nth-child(4) { order: 3; }
     #bento > :nth-child(5) { order: 4; }
     #bento > :nth-child(6) { order: 5; }
-    #bento > :nth-child(7) { order: 6; }
-    #bento > :nth-child(3) { order: 7; }
+    #bento > :nth-child(3) { order: 6; }
+    #bento > :nth-child(7) { order: 7; }
     #bento > :nth-child(8) { order: 8; }
-    #bento > :nth-child(9) { order: 9; }
   }
 </style>
