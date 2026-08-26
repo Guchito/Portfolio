@@ -7,6 +7,7 @@ const portfolio = defineCollection({
   schema: ({ image }) => z.object({
     title: z.string(),
     image: image(),
+    imageMobile: image().optional(),
     imageAlt: z.string(),
     description: z.string(),
     github: z.string(),

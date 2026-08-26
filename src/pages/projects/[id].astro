@@ -31,10 +31,22 @@ const links = [
   earlier={project.data.earlier}
   backHref="/projects"
 >
+  {
+    project.data.imageMobile && (
+      <Image
+        src={project.data.imageMobile}
+        alt={project.data.imageAlt}
+        class="w-full rounded-lg border border-darkslate-100 sm:hidden"
+      />
+    )
+  }
   <Image
     src={project.data.image}
     alt={project.data.imageAlt}
-    class="w-full rounded-lg border border-darkslate-100"
+    class:list={[
+      "w-full rounded-lg border border-darkslate-100",
+      project.data.imageMobile && "hidden sm:block",
+    ]}
   />
   <Content />
 </CaseStudyLayout>
