@@ -1,0 +1,29 @@
+---
+import Job from "../../components/Job.astro";
+import Layout from "../../layouts/Layout.astro";
+import BackLink from "../../components/BackLink.astro";
+---
+
+<script>
+  import { timeline, type TimelineDefinition } from "motion";
+  import { loaderAnimation } from "../../lib/constants";
+
+  const sequence = [loaderAnimation];
+
+  timeline(sequence as TimelineDefinition);
+</script>
+
+<Layout
+  title="Work Experience | Agustin Gaggero"
+  description="Work experience of Agustin Gaggero, Full-Stack Software Engineer — currently building production software for the EV charging ecosystem at Nordic Charge."
+>
+  <BackLink />
+  <main
+    class="w-full flex flex-col justify-start items-start max-w-3xl mx-auto p-8"
+  >
+    <h1 class="text-4xl font-bold mb-4 mt-20 text-neutral-100">
+      Work Experience
+    </h1>
+    <Job />
+  </main>
+</Layout>

@@ -1,0 +1,287 @@
+---
+import CaseStudyLayout from "../../layouts/CaseStudyLayout.astro";
+import EcosystemDiagram from "../../components/EcosystemDiagram.astro";
+
+const ownership = [
+  {
+    name: "Website",
+    level: "Built & own",
+    note: "nordiccharge.com, Astro + React, English and Danish",
+    mine: true,
+  },
+  {
+    name: "Marketplace",
+    level: "Built & own",
+    note: "B2B storefront on WordPress + WooCommerce",
+    mine: true,
+  },
+  {
+    name: "Commerce integrations",
+    level: "Built & own",
+    note: "Nordic Charge for WooCommerce, the partner-side plugin",
+    mine: true,
+  },
+  {
+    name: "API v2",
+    level: "Designed & built",
+    note: "The Portal's machine-to-machine REST API",
+    mine: true,
+  },
+  {
+    name: "Partner Portal",
+    level: "Maintain & develop",
+    note: "Existing Laravel platform, now one of its main maintainers",
+    mine: false,
+  },
+];
+---
+
+<style>
+  h2 {
+    border-top: 1px solid #2c2c2c;
+    padding-top: 2rem;
+    margin-top: 3rem;
+  }
+</style>
+
+<CaseStudyLayout
+  title="Nordic Charge | Agustin Gaggero"
+  description="Full-stack engineering across Nordic Charge's digital ecosystem, B2B marketplace, partner APIs, commerce integrations and the public website."
+  heading="Nordic Charge"
+  tagline="Building software for the EV charging ecosystem."
+  role="Full-Stack Developer"
+  timeframe="May 2025 – Present"
+  stack={[
+    "PHP",
+    "Laravel",
+    "Filament",
+    "WordPress",
+    "WooCommerce",
+    "MySQL",
+    "TypeScript",
+    "React",
+    "Astro",
+  ]}
+  links={[
+    {
+      label: "nordiccharge.com",
+      href: "https://www.nordiccharge.com",
+      icon: "ri:global-line",
+    },
+  ]}
+  backHref="/work"
+>
+  <h2>My role</h2>
+  <p>
+    I work across the production systems that connect partners, products,
+    orders and EV charging operations, building and owning customer-facing
+    products and integrations, while maintaining and extending the platform
+    behind them.
+  </p>
+  <div class="not-prose grid gap-3 sm:grid-cols-2 my-8 font-sans">
+    {
+      ownership.map((item) => (
+        <div
+          class={`rounded-lg border bg-darkslate-500 p-4 ${item.mine ? "border-primary-500" : "border-darkslate-100"}`}
+        >
+          <div class="flex items-baseline justify-between gap-3">
+            <p class="m-0 font-bold text-neutral-100">{item.name}</p>
+            <span
+              class={`text-xs whitespace-nowrap ${item.mine ? "text-primary-500" : "text-gray-400"}`}
+            >
+              {item.level}
+            </span>
+          </div>
+          <p class="m-0 mt-1 text-xs text-gray-400">{item.note}</p>
+        </div>
+      ))
+    }
+  </div>
+
+  <h2>How the systems connect</h2>
+  <EcosystemDiagram />
+  <p>
+    Orders can enter the Partner Portal through several channels. The marketplace
+    extends WooCommerce with custom functionality and talks to the Portal
+    through API v2 using machine-to-machine OAuth authentication. Partners running their
+    own Shopify or WooCommerce stores feed orders in through signed webhooks
+    or the integration plugin. Larger partners running their own systems
+    integrate directly against the Portal's REST APIs, the legacy API v1 or
+    API v2, depending on their needs. The Portal orchestrates
+    everything downstream,
+    fulfilment pipelines, installer field operations, inventory and invoicing,
+    and connects to charge-point platforms such as Monta, Zaptec and EOSVolt.
+  </p>
+
+  <h2>Partner Portal & API v2</h2>
+  <h3>The existing platform</h3>
+  <p>
+    The Partner Portal predates my involvement: a multi-tenant Laravel,
+    Filament and Livewire platform covering order management, installer
+    operations, team inventories and invoicing. Since joining in May 2025 I
+    have become one of its primary maintainers, contributing several hundred
+    commits across order workflows, partner operations and integrations.
+  </p>
+  <h3>
+    API v2
+    <span class="block mt-1 text-sm font-normal text-primary-500">
+      Designed & built from scratch
+    </span>
+  </h3>
+  <p>
+    API v2 is the Portal's machine-to-machine REST API for partner
+    integrations, and the primary API path for every new partner integration:
+  </p>
+  <ul>
+    <li>
+      <strong>OAuth 2.0 client-credentials</strong> (Laravel Passport), no
+      user context; each API client is bound to exactly one partner team, so
+      team binding is the authorization boundary.
+    </li>
+    <li>
+      <strong>Opaque public IDs</strong>, every resource is addressed by a
+      ULID; internal numeric keys are never exposed.
+    </li>
+    <li>
+      <strong>Cursor pagination</strong> across all list endpoints.
+    </li>
+    <li>
+      <strong>Idempotent order creation</strong>, orders are deduplicated on
+      two keys in a deliberate order, backed by a database unique constraint,
+      so a store mid-migration between webhook intake and the plugin can't
+      create duplicates: both paths recognise each other's orders. Race losers
+      re-read and return the winning row instead of failing.
+    </li>
+  </ul>
+  <p>
+    The API ships with generated reference docs, a Postman collection and a
+    feature-test suite covering the full OAuth round-trip, team scoping,
+    pagination and idempotency.
+  </p>
+
+  <h2>Marketplace</h2>
+  <h3>Built on WordPress + WooCommerce</h3>
+  <p>
+    The Nordic Charge B2B marketplace lets partners order charging equipment
+    directly. It deliberately builds on WordPress and WooCommerce rather than a
+    custom commerce engine, using the platform's existing commerce capabilities
+    while keeping the partner-specific functionality custom.
+  </p>
+  <h3>What I built</h3>
+  <p>
+    I built the custom theme and B2B plugin end to end and continue to own both
+    in production. Together they turn a stock WooCommerce install into a
+    partner store:
+  </p>
+  <ul>
+    <li>
+      <strong>Portal-backed sign-in</strong>, partners log in with their
+      Partner Portal credentials; the Portal remains the identity authority
+      and accounts are provisioned locally on first login.
+    </li>
+    <li>
+      <strong>Members-only storefront</strong>, guests see only the front
+      page and a request-access form; products and prices are gated to
+      authenticated partners.
+    </li>
+    <li>
+      <strong>Invoice checkout</strong>, a payment gateway that fits B2B
+      terms, with WooCommerce checkout-blocks support.
+    </li>
+    <li>
+      <strong>Catalogue importer</strong>, an idempotent tool that mirrors
+      the Portal's product catalogue into WooCommerce, collapsing colour
+      ranges into variable products while keeping every variation mapped to
+      its Portal counterpart.
+    </li>
+  </ul>
+  <p>
+    The theme shares its design system with the public website, so the
+    marketplace looks and feels like Nordic Charge across two very different
+    stacks.
+  </p>
+
+  <h2>Commerce integrations</h2>
+  <h3>The problem</h3>
+  <p>
+    Before the integration plugin existed, WooCommerce orders reached Nordic
+    Charge through a generic webhook, and matching what was actually ordered
+    meant guessing from SKU strings and product titles.
+  </p>
+  <h3>The solution</h3>
+  <p>
+    I built and maintain <strong>Nordic Charge for WooCommerce</strong>, a
+    plugin any partner store can install, built around explicit mapping instead
+    of guessing. Merchants map their catalogue to Portal products once, with a
+    parent/attribute model that keeps the mapping table small.
+  </p>
+  <div class="not-prose grid grid-cols-2 gap-3 my-8 font-sans">
+    <div
+      class="rounded-lg border border-darkslate-100 bg-darkslate-500 p-4 text-center"
+    >
+      <p class="m-0 text-3xl font-bold text-gray-400">30</p>
+      <p class="m-0 mt-1 text-xs text-gray-400">
+        individual variation mappings
+      </p>
+    </div>
+    <div
+      class="rounded-lg border border-primary-500 bg-darkslate-500 p-4 text-center"
+    >
+      <p class="m-0 text-3xl font-bold text-neutral-100">13</p>
+      <p class="m-0 mt-1 text-xs text-gray-400">
+        parent + attribute mappings
+      </p>
+    </div>
+  </div>
+  <p>
+    A charger with six colours across three installation tiers requires 30
+    variation-level mappings with a naive approach, versus 13 mappings using
+    the parent/attribute model.
+  </p>
+  <h3>Reliability</h3>
+  <p>
+    Orders are submitted through API v2 with a strict split between
+    <strong>terminal and retryable failures</strong>, bad data fails fast with
+    a note naming the field; network and server errors retry on a backoff
+    ladder without ever double-submitting. Submission state lives in HPOS-safe
+    order meta, so every admin surface (order column, meta box, resubmit
+    action) works on both classic and high-performance order storage.
+  </p>
+  <h3>Testing</h3>
+  <p>
+    The plugin ships with 400+ unit and integration tests, static analysis at
+    PHPStan level 8, and a CI matrix across PHP and WooCommerce versions.
+  </p>
+
+  <h2>Website</h2>
+  <h3>Ownership</h3>
+  <p>
+    I built
+    <a href="https://www.nordiccharge.com" target="_blank">nordiccharge.com</a>
+    and am responsible for its development, deployments and ongoing
+    maintenance.
+  </p>
+  <h3>Architecture</h3>
+  <p>
+    Astro and React, with around 26 routes across English and Danish, plus
+    serverless contact and careers endpoints.
+  </p>
+  <h3>Content system</h3>
+  <p>
+    Non-technical colleagues publish insights and team updates through a
+    Git-based CMS that commits directly to the repository. I also built a
+    custom rehype plugin to transform the CMS's markup into styled callouts.
+  </p>
+  <h3>Accessibility</h3>
+  <p>
+    Internationalisation with locale fallbacks, reduced-motion support and
+    keyboard-accessible navigation.
+  </p>
+
+  <h2>Deployment & infrastructure</h2>
+  <p>GitHub Actions · Laravel Forge · DigitalOcean</p>
+  <p>
+    I manage the deployment pipeline and production releases for the systems I
+    own.
+  </p>
+</CaseStudyLayout>

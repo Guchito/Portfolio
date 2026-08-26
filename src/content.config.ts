@@ -12,6 +12,10 @@ const portfolio = defineCollection({
     github: z.string(),
     link: z.string(),
     order: z.number().optional(),
+    role: z.string().optional(),
+    timeframe: z.string().optional(),
+    stack: z.array(z.string()).optional(),
+    earlier: z.boolean().default(false),
     }),
 });
 

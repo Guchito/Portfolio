@@ -5,15 +5,14 @@ import IntroCard from "../components/IntroCard.astro";
 import ContactsCard from "../components/ContactsCard.astro";
 import Globe from "../components/Globe";
 import AboutMe from "../components/AboutMe.astro";
-import Now from "../components/Now.astro";
-
+import ExperienceCard from "../components/ExperienceCard.astro";
 ---
 
 <script>
   import { stagger, spring, timeline, type TimelineDefinition } from "motion";
   import { loaderAnimation } from "../lib/constants";
-  // CSS `order` reshuffles the cards on mobile, so stagger by visual position, not DOM order
-  const cards = [...document.querySelectorAll(".card")].sort((a, b) => {
+  // CSS `order` reshuffles cards on mobile, so stagger by visual position, not DOM order
+  const cards = [...document.querySelectorAll("#bento .card")].sort((a, b) => {
     const ra = a.getBoundingClientRect();
     const rb = b.getBoundingClientRect();
     return ra.top - rb.top || ra.left - rb.left;
@@ -37,65 +36,78 @@ import Now from "../components/Now.astro";
 </script>
 
 <Layout
-  title="Agustin Gaggero - Full-stack web Developer"
-  description="I'm a developer based in Denmark, My primary tools of choice includes: JavaScript, Typescript, React, Nodejs, Astro, MySQL, PostgreSQL and Tailwind CSS"
-> 
+  title="Agustin Gaggero — Full-Stack Software Engineer"
+  description="Full-Stack Software Engineer based in Copenhagen, building production web applications, APIs, e-commerce platforms and integrations."
+>
   <main
-    class="text-white m-auto p-2 grid gap-2 max-w-6xl overflow-hidden relative w-full sm:p-4 sm:gap-2 md:grid-cols-3 md:gap-3 md:p-6 lg:h-screen lg:grid-rows-8 lg:grid-cols-4 lg:gap-4 lg:max-h-[800px]"
+    class="text-white w-full flex flex-col items-center md:min-h-screen md:justify-center"
   >
-    <IntroCard />
-    <AboutMe />
-    <ContactsCard />
-    <Card
-      colSpan="md:col-span-2"
-      rowSpan="md:row-span-2"
-      title="Projects & Portfolio"
-      href="/portfolio"
-    > 
-      <p class= "text-xl md:text-2xl font-bold flex items-center" >Check my latest creations</p>
-    </Card>
-    <Now />
-    <Card
-      colSpan="md:col-span-1"
-      rowSpan="md:row-span-2 flex gap-4"
-      title="Professional Experience"
-      href="/work"
+    <div
+      id="bento"
+      class="m-auto p-2 grid gap-2 max-w-6xl overflow-hidden relative w-full sm:p-4 sm:gap-2 md:grid-cols-3 md:gap-3 md:p-6 lg:h-screen lg:grid-rows-8 lg:grid-cols-4 lg:gap-4 lg:max-h-[800px]"
     >
-    </Card>
-    <Card
-      colSpan="md:col-span-1"
-      rowSpan="md:row-span-1"
-      title="Countries I visited"
-      href="travel"
-      colorText="text-neutral-900"
-      customClass="text-center"
-    >
-      <div class="h-full w-full absolute inset-0 -z-10">
-        <Globe client:load />
+      <IntroCard />
+      <AboutMe />
+      <ContactsCard />
+      <ExperienceCard />
+      <Card
+        colSpan="md:col-span-1"
+        rowSpan="md:row-span-2"
+        title="Featured project"
+        href="/projects/gunna"
+      >
+        <div class="my-auto w-full">
+          <h2>Gunna</h2>
+          <p class="text-xs mt-2">
+            AI running coach — Next.js · TypeScript · PostgreSQL
+          </p>
+        </div>
+      </Card>
+      <Card
+        colSpan="md:col-span-1"
+        rowSpan="md:row-span-2"
+        title="Portfolio"
+        href="/projects"
+      >
+      </Card>
+      <Card
+        colSpan="md:col-span-1 md:col-start-3 lg:col-start-auto"
+        rowSpan="md:row-span-2 md:row-start-5 lg:row-span-1 lg:row-start-auto"
+        title="Based in Copenhagen"
+        href="/travel"
+        colorText="text-neutral-900"
+        customClass="text-center"
+      >
+        <div class="h-full w-full absolute inset-0 -z-10">
+          <Globe client:load />
+        </div>
+      </Card>
+      <Card
+        colSpan="md:col-span-1 md:col-start-3 lg:col-start-auto"
+        rowSpan="md:row-span-2 md:row-start-7 lg:row-span-1 lg:row-start-auto"
+      >
+        <p class="text-xs leading-tight my-auto">
+          © {new Date().getFullYear()} · Crafted with ♥️ using <a
+            href="https://astro.build/"
+            target="_blank"
+            class="text-primary-500">Astro</a
+          > by Agustin.
+        </p>
+      </Card>
     </div>
-  </Card>
-    <Card colSpan="md:col-span-1" rowSpan="md:row-span-1">
-      <p class="text-xs leading-tight my-auto">
-        © {new Date().getFullYear()} · Crafted with ♥️ using <a
-          href="https://astro.build/"
-          target="_blank"
-          class="text-primary-500">Astro</a
-        > by Agustin.
-      </p>
-    </Card>
   </main>
 </Layout>
 
 <style is:global>
-  /* Mobile-only reading order: intro, about, experience, projects, now, contact, countries, footer */
+  /* Mobile-only reading order: intro, about, experience, gunna, projects, contact, countries, footer */
   @media (max-width: 767px) {
-    main > :nth-child(1) { order: 1; }
-    main > :nth-child(2) { order: 2; }
-    main > :nth-child(6) { order: 3; }
-    main > :nth-child(4) { order: 4; }
-    main > :nth-child(5) { order: 5; }
-    main > :nth-child(3) { order: 6; }
-    main > :nth-child(7) { order: 7; }
-    main > :nth-child(8) { order: 8; }
+    #bento > :nth-child(1) { order: 1; }
+    #bento > :nth-child(2) { order: 2; }
+    #bento > :nth-child(4) { order: 3; }
+    #bento > :nth-child(5) { order: 4; }
+    #bento > :nth-child(6) { order: 5; }
+    #bento > :nth-child(3) { order: 6; }
+    #bento > :nth-child(7) { order: 7; }
+    #bento > :nth-child(8) { order: 8; }
   }
 </style>

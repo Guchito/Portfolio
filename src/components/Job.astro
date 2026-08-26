@@ -21,6 +21,11 @@ allJobs.sort((a, b) => a.id.localeCompare(b.id));
                     <h2 class="text-xl font-bold" style={`color: ${PRIMARY_TEXT}`}>{job.data.company}</h2>
                     <h3 class="text-white ">{job.data.title}</h3>
                     <p class="text-sm text-white">{job.data.description}</p>
+                    {job.data.company === "Nordic Charge" && (
+                        <a class="mt-2 font-bold" style={`color: ${PRIMARY_TEXT}`} href="/work/nordic-charge">
+                            Read the full case study →
+                        </a>
+                    )}
                     <a class="mt-2" href={job.data.link} aria-label="Website" target="_blank">
                     <Button aria-label="Website">
                         <Icon name="ri:pages-line" class="h-6" />
