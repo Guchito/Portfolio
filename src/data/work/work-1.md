@@ -1,7 +1,7 @@
 ---
 title: Full-Stack Developer
 company: Nordic Charge
-description: I develop and maintain software across Nordic Charge's digital ecosystem. One of the primary maintainers of the Partner Portal — a multi-tenant EV charging operations platform in Laravel, Filament and Livewire — where I built the machine-to-machine API v2 from scratch. I own the public website (Astro, React, TypeScript), developed the B2B Marketplace with its custom WooCommerce theme and plugin, authored the Nordic Charge for WooCommerce integration plugin, shipped a React Native installer app, and work with integrations such as Monta, Zaptec and EOSVolt.
+description: I develop and maintain software across Nordic Charge's digital ecosystem. I'm one of the primary maintainers of the Partner Portal, where I designed and built the machine-to-machine API v2 from scratch. I also own the public website, built the B2B Marketplace and its custom WooCommerce integrations, and work across partner and charging-platform integrations.
 link: https://www.nordiccharge.com
 since: 2025
 until: Current
