@@ -8,17 +8,43 @@ import Card from "./Card/index.astro";
   title="About me"
   customClass="overflow-y-auto"
 >
-  <div class="flex flex-col gap-2">
-    <p class="text-sm font-light">
+  <div id="about-copy" class="flex flex-col flex-1 gap-2 text-sm/relaxed font-light">
+    <p>
       I’m a full-stack developer based in Copenhagen, building products end to end. From the interfaces people use to the APIs and infrastructure behind them.
     </p>
-    <p class="text-sm font-light">
+    <p>
       My day-to-day work includes Laravel and Filament, TypeScript and React, plus MySQL and PostgreSQL. Still, I believe in choosing the right tool for the job, even when it isn’t part of my usual stack.
     </p>
-    <p class="text-sm font-light">
+    <p>
       Beyond coding, I'm passionate about traveling and exploring new places.
       An unusual hobby of mine is flying planes. It's a thrilling way to see
       the world from a different perspective.
     </p>
   </div>
 </Card>
+
+<script>
+  const copy = document.getElementById("about-copy");
+  const card = copy?.closest(".card");
+  if (copy && card) {
+    const set = (v: number) => (copy.style.lineHeight = String(v));
+    const fit = () => {
+      // The bento grid only pins row heights at lg; below that the card is
+      // content-sized, so growing the text just grows the card.
+      if (!matchMedia("(min-width: 1024px)").matches) {
+        copy.style.lineHeight = "";
+        return;
+      }
+      let lh = 1.625;
+      set(lh);
+      // Measure the slack once — comparing against a live clientHeight lets the
+      // card grow with the text and never stop.
+      // ponytail: 0.05 steps up to 2.5, ~18 reflows worst case. Solve it in one
+      // pass from the line count if this ever shows up in a profile.
+      const box = copy.clientHeight;
+      while (lh < 2.5 && copy.scrollHeight <= box) set((lh += 0.05));
+      if (copy.scrollHeight > box) set(lh - 0.05);
+    };
+    new ResizeObserver(fit).observe(card);
+  }
+</script>
