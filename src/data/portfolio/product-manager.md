@@ -2,7 +2,7 @@
 title: Product Manager
 image: "./2.png"
 imageAlt: Screenshot of the Product Manager application.
-description: A full-stack product management app — a TypeScript REST API with Express and PostgreSQL, documented with Swagger and tested with Jest, plus a React frontend with schema-validated forms.
+description: A full-stack product management app, a TypeScript REST API with Express and PostgreSQL, documented with Swagger and tested with Jest, plus a React frontend with schema-validated forms.
 github: https://github.com/Guchito/Product-Manager
 link: https://product-manager-ebon.vercel.app
 order: 1
